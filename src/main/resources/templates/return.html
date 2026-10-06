@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Return Vehicle</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🚗 Vehicle Rental System
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+            <a href="/vehicles">Vehicles</a>
+            <a href="/book">Book</a>
+            <a href="/return">Return</a>
+
+        </div>
+
+    </nav>
+
+
+    <section class="hero vehicle-hero">
+
+        <div class="hero-content">
+
+            <h1>Return Vehicle</h1>
+
+            <p>
+                Return your rented vehicle and calculate
+                your security deposit refund.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="booking-section">
+
+        <div class="booking-card">
+
+            <h2>🔄 Return Details</h2>
+
+            <p>
+                Enter your Rental ID and the number of
+                late days to process the return.
+            </p>
+
+
+            <form action="/return" method="post">
+
+                <label>
+                    Rental ID
+                </label>
+
+                <input
+                    type="number"
+                    name="rentalId"
+                    placeholder="Enter rental ID"
+                    min="1"
+                    required>
+
+
+                <label>
+                    Late Days
+                </label>
+
+                <input
+                    type="number"
+                    name="lateDays"
+                    placeholder="Enter late days"
+                    min="0"
+                    value="0"
+                    required>
+
+
+                <button
+                    type="submit"
+                    class="btn">
+
+                    🔄 Return Vehicle
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Vehicle Rental System
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Book Vehicle</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🚗 Vehicle Rental System
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+            <a href="/vehicles">Vehicles</a>
+            <a href="/book">Book</a>
+            <a href="/return">Return</a>
+
+        </div>
+
+    </nav>
+
+
+    <section class="hero vehicle-hero">
+
+        <div class="hero-content">
+
+            <h1>Book a Vehicle</h1>
+
+            <p>
+                Enter your details and complete your vehicle booking.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="booking-section">
+
+        <div class="booking-card">
+
+            <h2>Booking Details</h2>
+
+
+            <!-- Selected Vehicle -->
+
+            <div th:if="${vehicle != null}">
+
+                <p>
+                    <strong>Selected Vehicle:</strong>
+
+                    <span th:text="${vehicle.brand}"></span>
+
+                    <span th:text="${vehicle.model}"></span>
+                </p>
+
+                <p>
+                    <strong>Vehicle Type:</strong>
+
+                    <span th:text="${vehicle.type}"></span>
+                </p>
+
+                <p>
+                    <strong>Rental Rate:</strong>
+
+                    ₹<span th:text="${vehicle.rentalRate}"></span>
+                    / day
+                </p>
+                <p>
+    <strong>Note:</strong>
+    Final rental cost will be calculated based on the number of rental days.
+</p>
+
+            </div>
+
+
+            <form action="/book" method="post">
+
+                <input
+                    type="hidden"
+                    name="vehicleId"
+                    th:value="${vehicleId}">
+
+
+                <label>
+                    Customer Name
+                </label>
+
+                <input
+                    type="text"
+                    name="customerName"
+                    placeholder="Enter your name"
+                    required>
+
+
+                <label>
+                    Contact Details
+                </label>
+
+                <input
+                    type="text"
+                    name="contactDetails"
+                    placeholder="Enter phone number"
+                    required>
+
+
+                <label>
+                    Rental Days
+                </label>
+
+                <input
+                    type="number"
+                    name="days"
+                    placeholder="Enter number of days"
+                    min="1"
+                    required>
+
+
+                <label>
+                    Security Deposit
+                </label>
+
+                <input
+                    type="number"
+                    name="deposit"
+                    placeholder="Enter security deposit"
+                    min="0"
+                    step="0.01"
+                    required>
+
+
+                <button
+                    type="submit"
+                    class="btn">
+
+                    🚗 Confirm Booking
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Vehicle Rental System
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

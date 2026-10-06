@@ -1,0 +1,398 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fb;
+    color: #222;
+}
+
+/* Navigation Bar */
+.navbar {
+    background: #111827;
+    color: white;
+    padding: 18px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    color: #60a5fa;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: 52px;
+    margin-bottom: 20px;
+    color: #111827;
+}
+
+.hero p {
+    font-size: 19px;
+    color: #4b5563;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #1d4ed8;
+}
+
+/* Features */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 50px 30px;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    background: white;
+    width: 280px;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card h3 {
+    margin: 15px 0 10px;
+}
+
+.feature-card p {
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+/* Footer */
+.footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 18px 25px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+}
+/* Booking Form */
+
+.booking-section {
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+}
+
+.booking-card {
+    background: white;
+    width: 500px;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.booking-card h2 {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.booking-card label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.booking-card input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.booking-card .btn {
+    border: none;
+    cursor: pointer;
+    margin-top: 25px;
+    width: 100%;
+}
+ /* Vehicle Page */
+
+.vehicle-hero {
+    min-height: 350px;
+}
+
+.vehicle-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 60px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.vehicle-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.vehicle-icon {
+    font-size: 65px;
+    margin-bottom: 15px;
+}
+
+.vehicle-card h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #111827;
+}
+
+.vehicle-info {
+    text-align: left;
+    margin: 20px 0;
+}
+
+.vehicle-info p {
+    margin: 10px 0;
+    color: #4b5563;
+}
+
+.vehicle-info .price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2563eb;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.vehicle-info small {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.status {
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.available {
+    color: #16a34a;
+}
+
+.rented {
+    color: #dc2626;
+}
+
+.vehicle-button {
+    margin-top: 20px;
+}
+
+.disabled-btn {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+
+.disabled-btn:hover {
+    background: #9ca3af;
+}
+/* ============================= */
+/* Final Website Improvements */
+/* ============================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+}
+
+
+/* Navigation */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-links a {
+    transition: color 0.2s ease;
+}
+
+
+/* Buttons */
+
+.btn {
+    transition: 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* Vehicle Cards */
+
+.vehicle-section {
+    align-items: stretch;
+}
+
+.vehicle-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.vehicle-button {
+    margin-top: auto;
+}
+
+
+/* Booking Card */
+
+.booking-card {
+    max-width: 500px;
+}
+
+.booking-card p {
+    margin: 12px 0;
+    line-height: 1.6;
+}
+
+
+/* Success Messages */
+
+.booking-card h2 {
+    color: #111827;
+    margin-bottom: 25px;
+}
+
+
+/* Footer */
+
+.footer {
+    margin-top: 40px;
+}
+
+
+/* Mobile Responsive Design */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .vehicle-section {
+        padding: 35px 20px;
+        grid-template-columns: 1fr;
+    }
+
+    .booking-section {
+        padding: 35px 15px;
+    }
+
+    .booking-card {
+        width: 100%;
+    }
+
+    .hero {
+        min-height: 400px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+}
+/* Remove Vehicle Button */
+
+.remove-btn {
+    background: #dc2626;
+    border: none;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background: #b91c1c;
+}

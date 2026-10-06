@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Vehicle Returned</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🚗 Vehicle Rental System
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+            <a href="/vehicles">Vehicles</a>
+            <a href="/book">Book</a>
+            <a href="/return">Return</a>
+
+        </div>
+
+    </nav>
+
+
+    <section class="booking-section">
+
+        <div class="booking-card">
+
+            <h2>✅ Vehicle Returned Successfully!</h2>
+
+            <p>
+                <strong>Rental ID:</strong>
+                <span th:text="${rental.rentalId}"></span>
+            </p>
+
+            <p>
+                <strong>Customer:</strong>
+                <span th:text="${rental.customerName}"></span>
+            </p>
+
+            <p>
+                <strong>Vehicle:</strong>
+                <span th:text="${rental.vehicle.brand}"></span>
+                <span th:text="${rental.vehicle.model}"></span>
+            </p>
+
+            <p>
+                <strong>Rental Cost:</strong>
+                ₹<span th:text="${rental.rentalCost}"></span>
+            </p>
+
+            <p>
+                <strong>Security Deposit:</strong>
+                ₹<span th:text="${rental.securityDeposit}"></span>
+            </p>
+
+            <p>
+                <strong>Late Penalty:</strong>
+                ₹<span th:text="${rental.latePenalty}"></span>
+            </p>
+
+            <p>
+                <strong>Refund Amount:</strong>
+                ₹<span th:text="${rental.refundAmount}"></span>
+            </p>
+
+            <br>
+
+            <a href="/vehicles" class="btn">
+                View Vehicles
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Vehicle Rental System
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

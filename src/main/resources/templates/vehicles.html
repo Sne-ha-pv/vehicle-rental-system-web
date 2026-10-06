@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Available Vehicles</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🚗 Vehicle Rental System
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+
+            <a href="/vehicles">Vehicles</a>
+
+            <a href="/book">Book</a>
+
+            <a href="/return">Return</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Page Heading -->
+
+    <section class="hero vehicle-hero">
+
+        <div class="hero-content">
+
+            <h1>Our Vehicles</h1>
+
+            <p>
+                Choose from our collection of cars, bikes and vans.
+                Find the perfect vehicle for your journey.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Vehicle Cards -->
+
+    <section class="vehicle-section">
+
+        <div
+            class="vehicle-card"
+            th:each="vehicle : ${vehicles}">
+
+            <!-- Vehicle Icon -->
+
+            <div class="vehicle-icon">
+
+                <span th:if="${vehicle.type == 'Car'}">
+                    🚘
+                </span>
+
+                <span th:if="${vehicle.type == 'Bike'}">
+                    🏍️
+                </span>
+
+                <span th:if="${vehicle.type == 'Van'}">
+                    🚐
+                </span>
+
+            </div>
+
+
+            <!-- Vehicle Name -->
+
+            <h2>
+
+                <span th:text="${vehicle.brand}"></span>
+
+                <span th:text="${vehicle.model}"></span>
+
+            </h2>
+
+
+            <!-- Vehicle Information -->
+
+            <div class="vehicle-info">
+
+                <p>
+                    <strong>Vehicle ID:</strong>
+
+                    <span th:text="${vehicle.vehicleId}"></span>
+                </p>
+
+                <p>
+                    <strong>Type:</strong>
+
+                    <span th:text="${vehicle.type}"></span>
+                </p>
+
+                <p class="price">
+
+                    ₹<span th:text="${vehicle.rentalRate}"></span>
+
+                    <small>/ day</small>
+
+                </p>
+
+            </div>
+
+
+            <!-- Availability -->
+
+            <div class="status">
+
+                <span
+                    th:if="${vehicle.available}"
+                    class="available">
+
+                    ● Available
+
+                </span>
+
+                <span
+                    th:unless="${vehicle.available}"
+                    class="rented">
+
+                    ● Rented
+
+                </span>
+
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="vehicle-button">
+
+                <!-- Book Button -->
+
+                <a
+                    th:if="${vehicle.available}"
+                    th:href="@{/book(vehicleId=${vehicle.vehicleId})}"
+                    class="btn">
+
+                    Book Now
+
+                </a>
+
+                <button
+                    th:unless="${vehicle.available}"
+                    class="btn disabled-btn"
+                    disabled>
+
+                    Currently Rented
+
+                </button>
+
+
+                <br>
+                <br>
+
+
+                <!-- Update Button -->
+
+                <a
+                    th:href="@{/update(vehicleId=${vehicle.vehicleId})}"
+                    class="btn">
+
+                    ✏️ Update Vehicle
+
+                </a>
+
+
+                <!-- Remove Button -->
+
+                <form
+                    action="/remove"
+                    method="post"
+                    style="margin-top: 10px;"
+                    onsubmit="return confirm('Are you sure you want to remove this vehicle?');">
+
+                    <input
+                        type="hidden"
+                        name="vehicleId"
+                        th:value="${vehicle.vehicleId}">
+
+                    <button
+                        type="submit"
+                        class="btn remove-btn">
+
+                        🗑️ Remove Vehicle
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Vehicle Rental System
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

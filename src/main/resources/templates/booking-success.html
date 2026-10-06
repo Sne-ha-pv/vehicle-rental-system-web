@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Booking Successful</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🚗 Vehicle Rental System
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+            <a href="/vehicles">Vehicles</a>
+            <a href="/book">Book</a>
+            <a href="/return">Return</a>
+
+        </div>
+
+    </nav>
+
+
+    <section class="booking-section">
+
+        <div class="booking-card">
+
+            <h2>✅ Booking Successful!</h2>
+
+            <p>
+                Your vehicle has been booked successfully.
+            </p>
+
+            <hr>
+
+
+            <p>
+                <strong>Rental ID:</strong>
+                <span th:text="${rentalId}"></span>
+            </p>
+
+            <p>
+                <strong>Customer:</strong>
+                <span th:text="${customerName}"></span>
+            </p>
+
+            <p>
+                <strong>Contact:</strong>
+                <span th:text="${contactDetails}"></span>
+            </p>
+
+            <p>
+                <strong>Vehicle:</strong>
+                <span th:text="${vehicle.brand}"></span>
+                <span th:text="${vehicle.model}"></span>
+            </p>
+
+            <p>
+                <strong>Vehicle ID:</strong>
+                <span th:text="${vehicle.vehicleId}"></span>
+            </p>
+
+            <p>
+                <strong>Rental Days:</strong>
+                <span th:text="${days}"></span>
+            </p>
+
+            <hr>
+
+            <p>
+                <strong>Rental Cost:</strong>
+                ₹<span th:text="${rentalCost}"></span>
+            </p>
+
+            <p>
+                <strong>Security Deposit:</strong>
+                ₹<span th:text="${deposit}"></span>
+            </p>
+
+            <br>
+
+            <p>
+                🔑 Please keep your Rental ID for returning the vehicle.
+            </p>
+
+            <br>
+
+            <a href="/vehicles" class="btn">
+                🚗 View Vehicles
+            </a>
+
+            <br><br>
+
+            <a href="/return" class="btn">
+                🔄 Return Vehicle
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Vehicle Rental System
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

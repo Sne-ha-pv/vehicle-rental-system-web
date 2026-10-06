@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Update Vehicle</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🚗 Vehicle Rental System
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+
+            <a href="/vehicles">Vehicles</a>
+
+            <a href="/book">Book</a>
+
+            <a href="/return">Return</a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- Page Heading -->
+
+    <section class="hero vehicle-hero">
+
+        <div class="hero-content">
+
+            <h1>Update Vehicle</h1>
+
+            <p>
+                Update the vehicle details and rental rate.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Update Form -->
+
+    <section class="booking-section">
+
+        <div class="booking-card">
+
+            <h2>Vehicle Details</h2>
+
+
+            <form action="/update" method="post">
+
+
+                <label>
+                    Vehicle ID
+                </label>
+
+                <input
+                    type="number"
+                    name="vehicleId"
+                    th:value="${vehicle.vehicleId}"
+                    readonly>
+
+
+                <label>
+                    Vehicle Type
+                </label>
+
+                <input
+                    type="text"
+                    th:value="${vehicle.type}"
+                    readonly>
+
+
+                <label>
+                    Brand
+                </label>
+
+                <input
+                    type="text"
+                    name="brand"
+                    th:value="${vehicle.brand}"
+                    required>
+
+
+                <label>
+                    Model
+                </label>
+
+                <input
+                    type="text"
+                    name="model"
+                    th:value="${vehicle.model}"
+                    required>
+
+
+                <label>
+                    Rental Rate per Day
+                </label>
+
+                <input
+                    type="number"
+                    name="rentalRate"
+                    th:value="${vehicle.rentalRate}"
+                    min="1"
+                    step="0.01"
+                    required>
+
+
+                <button
+                    type="submit"
+                    class="btn">
+
+                    Update Vehicle
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Vehicle Rental System
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
