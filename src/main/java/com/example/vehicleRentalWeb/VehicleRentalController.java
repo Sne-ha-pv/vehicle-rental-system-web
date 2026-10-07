@@ -88,21 +88,26 @@ public class VehicleRentalController {
     // =========================
 
     @GetMapping("/book")
-    public String bookPage(
-            @RequestParam(required = false) Integer vehicleId,
-            Model model) {
+public String bookPage(
+        @RequestParam(required = false) Integer vehicleId,
+        Model model) {
 
-        if (vehicleId != null) {
+    model.addAttribute(
+            "vehicles",
+            vehicleService.getAllVehicles()
+    );
 
-            Vehicle vehicle =
-                    vehicleService.findVehicle(vehicleId);
+    if (vehicleId != null) {
 
-            model.addAttribute("vehicle", vehicle);
-            model.addAttribute("vehicleId", vehicleId);
-        }
+        Vehicle vehicle =
+                vehicleService.findVehicle(vehicleId);
 
-        return "book";
+        model.addAttribute("vehicle", vehicle);
+        model.addAttribute("vehicleId", vehicleId);
     }
+
+    return "book";
+}
 
     // =========================
     // RETURN PAGE

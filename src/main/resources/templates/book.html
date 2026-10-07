@@ -56,8 +56,6 @@
             <h2>Booking Details</h2>
 
 
-            <!-- Selected Vehicle -->
-
             <div th:if="${vehicle != null}">
 
                 <p>
@@ -80,62 +78,85 @@
                     ₹<span th:text="${vehicle.rentalRate}"></span>
                     / day
                 </p>
+
                 <p>
-    <strong>Note:</strong>
-    Final rental cost will be calculated based on the number of rental days.
-</p>
+                    <strong>Note:</strong>
+                    Final rental cost will be calculated based on the number of rental days.
+                </p>
 
             </div>
 
 
             <form action="/book" method="post">
 
-                <input
-                    type="hidden"
+
+                <label for="vehicleId">
+                    Select Vehicle
+                </label>
+
+                <select
+                    id="vehicleId"
                     name="vehicleId"
-                    th:value="${vehicleId}">
+                    required>
+
+                    <option value="">
+                        Select an available vehicle
+                    </option>
+
+                    <option
+                        th:each="v : ${vehicles}"
+                        th:if="${v.available}"
+                        th:value="${v.vehicleId}"
+                        th:text="${v.vehicleId + ' - ' + v.brand + ' ' + v.model + ' (' + v.type + ') - ₹' + v.rentalRate + '/day'}">
+                    </option>
+
+                </select>
 
 
-                <label>
+                <label for="customerName">
                     Customer Name
                 </label>
 
                 <input
                     type="text"
+                    id="customerName"
                     name="customerName"
                     placeholder="Enter your name"
                     required>
 
 
-                <label>
+                <label for="contactDetails">
                     Contact Details
                 </label>
 
                 <input
                     type="text"
+                    id="contactDetails"
                     name="contactDetails"
                     placeholder="Enter phone number"
                     required>
 
 
-                <label>
+                <label for="days">
                     Rental Days
                 </label>
 
                 <input
                     type="number"
+                    id="days"
                     name="days"
                     placeholder="Enter number of days"
                     min="1"
                     required>
 
 
-                <label>
+                <label for="deposit">
                     Security Deposit
                 </label>
 
                 <input
                     type="number"
+                    id="deposit"
                     name="deposit"
                     placeholder="Enter security deposit"
                     min="0"

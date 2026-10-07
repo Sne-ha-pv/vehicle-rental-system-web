@@ -109,21 +109,48 @@
             <!-- Buttons -->
             <div class="vehicle-button">
 
-                <a
-                    th:if="${vehicle.available}"
-                    th:href="@{/book(vehicleId=${vehicle.vehicleId})}"
-                    class="btn">
-                    Book Vehicle
-                </a>
+    <!-- Book -->
+    <a
+        th:if="${vehicle.available}"
+        th:href="@{/book(vehicleId=${vehicle.vehicleId})}"
+        class="btn">
+        Book Vehicle
+    </a>
 
-                <span
-                    th:unless="${vehicle.available}"
-                    class="btn disabled-btn">
-                    Currently Rented
-                </span>
+    <span
+        th:unless="${vehicle.available}"
+        class="btn disabled-btn">
+        Currently Rented
+    </span>
 
-            </div>
+    <!-- Update -->
+    <a
+        th:href="@{/update(vehicleId=${vehicle.vehicleId})}"
+        class="btn">
+        Update
+    </a>
 
+    <!-- Remove -->
+    <form
+        th:action="@{/remove}"
+        method="post"
+        style="display:inline;">
+
+        <input
+            type="hidden"
+            name="vehicleId"
+            th:value="${vehicle.vehicleId}">
+
+        <button
+            type="submit"
+            class="btn remove-btn"
+            onclick="return confirm('Are you sure you want to remove this vehicle?');">
+            Remove
+        </button>
+
+    </form>
+
+</div>
         </div>
 
     </section>
