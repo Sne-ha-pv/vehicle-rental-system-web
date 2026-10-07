@@ -1,228 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>Add Vehicle | Vehicle Rental System</title>
 
-    <title>Available Vehicles</title>
-
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" th:href="@{/style.css(v=4)}">
 </head>
 
 <body>
 
-    <!-- Navigation Bar -->
+    <div class="page-container">
 
-    <nav class="navbar">
-
-        <div class="logo">
-            🚗 Vehicle Rental System
-        </div>
-
-        <div class="nav-links">
-
-            <a href="/">Home</a>
-
-            <a href="/vehicles">Vehicles</a>
-
-            <a href="/book">Book</a>
-
-            <a href="/return">Return</a>
-
-        </div>
-
-    </nav>
-
-
-    <!-- Page Heading -->
-
-    <section class="hero vehicle-hero">
-
-        <div class="hero-content">
-
-            <h1>Our Vehicles</h1>
-
-            <p>
-                Choose from our collection of cars, bikes and vans.
-                Find the perfect vehicle for your journey.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- Vehicle Cards -->
-
-    <section class="vehicle-section">
-
-        <div
-            class="vehicle-card"
-            th:each="vehicle : ${vehicles}">
-
-            <!-- Vehicle Icon -->
-
-            <div class="vehicle-icon">
-
-                <span th:if="${vehicle.type == 'Car'}">
-                    🚘
-                </span>
-
-                <span th:if="${vehicle.type == 'Bike'}">
-                    🏍️
-                </span>
-
-                <span th:if="${vehicle.type == 'Van'}">
-                    🚐
-                </span>
-
+        <!-- Header -->
+        <header class="page-header">
+            <div>
+                <h1>🚗 Add New Vehicle</h1>
+                <p>Add a new vehicle to your rental inventory</p>
             </div>
 
-
-            <!-- Vehicle Name -->
-
-            <h2>
-
-                <span th:text="${vehicle.brand}"></span>
-
-                <span th:text="${vehicle.model}"></span>
-
-            </h2>
+            <a href="/vehicles" class="back-button">
+                ← Back to Vehicles
+            </a>
+        </header>
 
 
-            <!-- Vehicle Information -->
+        <!-- Add Vehicle Card -->
+        <div class="form-card">
 
-            <div class="vehicle-info">
-
-                <p>
-                    <strong>Vehicle ID:</strong>
-
-                    <span th:text="${vehicle.vehicleId}"></span>
-                </p>
-
-                <p>
-                    <strong>Type:</strong>
-
-                    <span th:text="${vehicle.type}"></span>
-                </p>
-
-                <p class="price">
-
-                    ₹<span th:text="${vehicle.rentalRate}"></span>
-
-                    <small>/ day</small>
-
-                </p>
-
+            <div class="form-title">
+                <h2>Vehicle Details</h2>
+                <p>Enter the details of the new vehicle below.</p>
             </div>
 
+            <form action="/add-vehicle" method="post">
 
-            <!-- Availability -->
+                <div class="form-grid">
 
-            <div class="status">
-
-                <span
-                    th:if="${vehicle.available}"
-                    class="available">
-
-                    ● Available
-
-                </span>
-
-                <span
-                    th:unless="${vehicle.available}"
-                    class="rented">
-
-                    ● Rented
-
-                </span>
-
-            </div>
+                    <!-- Vehicle ID -->
+                    <div class="form-group">
+                        <label for="vehicleId">Vehicle ID</label>
+                        <input
+                            type="number"
+                            id="vehicleId"
+                            name="vehicleId"
+                            placeholder="Enter vehicle ID"
+                            required>
+                    </div>
 
 
-            <!-- Buttons -->
+                    <!-- Vehicle Type -->
+                    <div class="form-group">
+                        <label for="type">Vehicle Type</label>
 
-            <div class="vehicle-button">
+                        <select id="type" name="type" required>
 
-                <!-- Book Button -->
+                            <option value="">Select vehicle type</option>
 
-                <a
-                    th:if="${vehicle.available}"
-                    th:href="@{/book(vehicleId=${vehicle.vehicleId})}"
-                    class="btn">
+                            <option value="Car">🚗 Car</option>
 
-                    Book Now
+                            <option value="Bike">🏍️ Bike</option>
 
-                </a>
+                            <option value="Van">🚐 Van</option>
 
-                <button
-                    th:unless="${vehicle.available}"
-                    class="btn disabled-btn"
-                    disabled>
-
-                    Currently Rented
-
-                </button>
+                        </select>
+                    </div>
 
 
-                <br>
-                <br>
+                    <!-- Brand -->
+                    <div class="form-group">
+                        <label for="brand">Brand</label>
+
+                        <input
+                            type="text"
+                            id="brand"
+                            name="brand"
+                            placeholder="e.g. Toyota"
+                            required>
+                    </div>
 
 
-                <!-- Update Button -->
+                    <!-- Model -->
+                    <div class="form-group">
+                        <label for="model">Model</label>
 
-                <a
-                    th:href="@{/update(vehicleId=${vehicle.vehicleId})}"
-                    class="btn">
+                        <input
+                            type="text"
+                            id="model"
+                            name="model"
+                            placeholder="e.g. Etios"
+                            required>
+                    </div>
 
-                    ✏️ Update Vehicle
 
-                </a>
+                    <!-- Rental Rate -->
+                    <div class="form-group full-width">
+                        <label for="rentalRate">
+                            Rental Rate Per Day
+                        </label>
+
+                        <div class="price-input">
+                            <span>₹</span>
+
+                            <input
+                                type="number"
+                                id="rentalRate"
+                                name="rentalRate"
+                                placeholder="Enter daily rental rate"
+                                min="0"
+                                step="0.01"
+                                required>
+                        </div>
+                    </div>
+
+                </div>
 
 
-                <!-- Remove Button -->
+                <!-- Buttons -->
+                <div class="form-actions">
 
-                <form
-                    action="/remove"
-                    method="post"
-                    style="margin-top: 10px;"
-                    onsubmit="return confirm('Are you sure you want to remove this vehicle?');">
+                    <a href="/vehicles" class="cancel-button">
+                        Cancel
+                    </a>
 
-                    <input
-                        type="hidden"
-                        name="vehicleId"
-                        th:value="${vehicle.vehicleId}">
-
-                    <button
-                        type="submit"
-                        class="btn remove-btn">
-
-                        🗑️ Remove Vehicle
-
+                    <button type="submit" class="add-button">
+                        + Add Vehicle
                     </button>
 
-                </form>
+                </div>
 
-            </div>
+            </form>
 
         </div>
 
-    </section>
-
-
-    <!-- Footer -->
-
-    <footer class="footer">
-
-        <p>
-            © 2026 Vehicle Rental System
-        </p>
-
-    </footer>
+    </div>
 
 </body>
-
 </html>

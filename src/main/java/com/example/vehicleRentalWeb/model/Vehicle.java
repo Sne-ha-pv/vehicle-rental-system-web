@@ -9,6 +9,12 @@ public class Vehicle {
     private double rentalRate;
     private boolean available;
 
+    // Default constructor required for Add Vehicle form
+    public Vehicle() {
+        this.available = true;
+    }
+
+    // Constructor
     public Vehicle(int vehicleId, String type, String brand,
                    String model, double rentalRate) {
 
@@ -20,6 +26,7 @@ public class Vehicle {
         this.available = true;
     }
 
+    // Getters
     public int getVehicleId() {
         return vehicleId;
     }
@@ -44,8 +51,13 @@ public class Vehicle {
         return available;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
+    // Setters
+    public void setVehicleId(int vehicleId) {
+        this.vehicleId = vehicleId;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public void setBrand(String brand) {
@@ -60,6 +72,11 @@ public class Vehicle {
         this.rentalRate = rentalRate;
     }
 
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    // Calculate rental cost
     public double calculateRentalCost(int days) {
         return rentalRate * days;
     }

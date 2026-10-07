@@ -59,4 +59,11 @@ public class VehicleService {
 
         return false;
     }
+        // Add new vehicle
+    public void addVehicle(Vehicle vehicle) {
+
+        vehicle.setAvailable(true);
+
+        vehicles.add(vehicle);
+    }
 }
